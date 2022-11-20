@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="Header\Console.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Define.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Image\ImageFading.h">
+      <Filter>Header\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Image\ImageLayer.h">
+      <Filter>Header\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Image\ImageLayerImpl.h">
+      <Filter>Header\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Image\ImageLayerInterface.h">
+      <Filter>Header\Image</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{b8303532-ee7b-4c9b-b85c-aab128730190}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Image">
+      <UniqueIdentifier>{4bd1cdda-0325-45bf-97de-5ba9387a15f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{d0763502-1849-409d-bfba-4917cf170ffc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\background">
+      <UniqueIdentifier>{6d068d5f-31a9-431b-863a-73c5016aeaae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ConsoleGame.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resource\background\background.bmp">
+      <Filter>Resource\background</Filter>
+    </Image>
+    <Image Include="Resource\background\background2.bmp">
+      <Filter>Resource\background</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
