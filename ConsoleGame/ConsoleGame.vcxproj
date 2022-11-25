@@ -136,10 +136,12 @@
     <ClInclude Include="Header\Image\ImageLayer.h" />
     <ClInclude Include="Header\Image\ImageLayerImpl.h" />
     <ClInclude Include="Header\Image\ImageLayerInterface.h" />
+    <ClInclude Include="Header\Judgement.h" />
     <ClInclude Include="Header\NewImage\ManyLayer.h" />
     <ClInclude Include="Header\NewImage\ManyLayerImplementation.h" />
     <ClInclude Include="Header\NewImage\ManyLayerInterface.h" />
     <ClInclude Include="Header\Object.h" />
+    <ClInclude Include="Header\Screen.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resource\background\background.bmp" />

@@ -31,6 +31,12 @@
     <ClInclude Include="Header\Object.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Screen.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Judgement.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
