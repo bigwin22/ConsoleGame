@@ -53,9 +53,9 @@ void Misile_Func(struct Misile_args Misile_arg)
 	Image* images = Misile_arg.images;
 
 	images[2].fileName = "Resource/Spaceship/Spaceship_fire.bmp";
-	images[2].x = 0;
-	images[2].y = 1000;
-	images[2].scale = 0.25;
+	images[2].x = *(misile.x);
+	images[2].y = *(misile.y);
+	images[2].scale = 0.25; 
 	
 }
 
@@ -66,7 +66,7 @@ void User_Move(User* user, Image *images)
 	if (_kbhit())
 	{
 		key= _getch();
-		struct Misile_args Misile_arg = { {&images[user->lo].x, &images[user->lo].y, 1, (*user).damage, 2}, images - (*user).lo};
+		struct Misile_args Misile_arg = {{((*user).x), ((*user).y), 1, (*user).damage, 2},images - (*user).lo};
 		switch (key)
 		{
 		case LEFT:
