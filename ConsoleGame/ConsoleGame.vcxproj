@@ -136,10 +136,18 @@
     <ClInclude Include="Header\Image\ImageLayer.h" />
     <ClInclude Include="Header\Image\ImageLayerImpl.h" />
     <ClInclude Include="Header\Image\ImageLayerInterface.h" />
+    <ClInclude Include="Header\NewImage\ManyLayer.h" />
+    <ClInclude Include="Header\NewImage\ManyLayerImplementation.h" />
+    <ClInclude Include="Header\NewImage\ManyLayerInterface.h" />
+    <ClInclude Include="Header\Object.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resource\background\background.bmp" />
     <Image Include="Resource\background\background2.bmp" />
+    <Image Include="Resource\background\background3.bmp" />
+    <Image Include="Resource\Spaceship\Spaceship_fire.bmp" />
+    <Image Include="Resource\Spaceship\Spaceship_nonfire.bmp" />
+    <Image Include="Resource\Spaceship\Spaceship_strong_fire.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

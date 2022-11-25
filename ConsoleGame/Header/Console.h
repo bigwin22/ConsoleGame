@@ -7,7 +7,7 @@
 #include <time.h>
 
 #define DEFAULT_CONSOLE_WIDTH 60  
-#define DEFAULT_CONSOLE_HEIGHT 44
+#define DEFAULT_CONSOLE_HEIGHT 43
 
 #pragma comment(lib, "winmm.lib")
 

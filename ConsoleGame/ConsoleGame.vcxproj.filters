@@ -19,6 +19,18 @@
     <ClInclude Include="Header\Image\ImageLayerInterface.h">
       <Filter>Header\Image</Filter>
     </ClInclude>
+    <ClInclude Include="Header\NewImage\ManyLayer.h">
+      <Filter>Header\NewImage</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\NewImage\ManyLayerImplementation.h">
+      <Filter>Header\NewImage</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\NewImage\ManyLayerInterface.h">
+      <Filter>Header\NewImage</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Object.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">
@@ -33,6 +45,27 @@
     <Filter Include="Resource\background">
       <UniqueIdentifier>{6d068d5f-31a9-431b-863a-73c5016aeaae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Spaceship">
+      <UniqueIdentifier>{55ce870d-e152-426a-bbe1-1e472fe5625c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\NewImage">
+      <UniqueIdentifier>{52080684-b009-4c7e-90ea-2ace01d87904}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mob">
+      <UniqueIdentifier>{5799b2da-653b-4bcb-ae10-a3949483cda5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mob\3q3">
+      <UniqueIdentifier>{70ce292b-99e4-4654-8ed6-3adb9db1fc54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mob\3q2">
+      <UniqueIdentifier>{db74588a-accc-43e6-b9fb-5cd14b1dee37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mob\3q1">
+      <UniqueIdentifier>{b18b0902-9161-4a9f-af9f-ca12a55cf516}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mob\Boss">
+      <UniqueIdentifier>{8aea73b8-a7dc-4508-9240-29ddcacc90a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleGame.c" />
@@ -41,7 +74,19 @@
     <Image Include="Resource\background\background.bmp">
       <Filter>Resource\background</Filter>
     </Image>
+    <Image Include="Resource\Spaceship\Spaceship_fire.bmp">
+      <Filter>Resource\Spaceship</Filter>
+    </Image>
+    <Image Include="Resource\Spaceship\Spaceship_nonfire.bmp">
+      <Filter>Resource\Spaceship</Filter>
+    </Image>
+    <Image Include="Resource\Spaceship\Spaceship_strong_fire.bmp">
+      <Filter>Resource\Spaceship</Filter>
+    </Image>
     <Image Include="Resource\background\background2.bmp">
+      <Filter>Resource\background</Filter>
+    </Image>
+    <Image Include="Resource\background\background3.bmp">
       <Filter>Resource\background</Filter>
     </Image>
   </ItemGroup>
