@@ -72,6 +72,9 @@
     <Filter Include="Resource\Mob\Boss">
       <UniqueIdentifier>{8aea73b8-a7dc-4508-9240-29ddcacc90a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Missile">
+      <UniqueIdentifier>{1d46824c-e777-4e44-b32e-6796741ed262}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleGame.c" />
@@ -94,6 +97,9 @@
     </Image>
     <Image Include="Resource\background\background3.bmp">
       <Filter>Resource\background</Filter>
+    </Image>
+    <Image Include="Resource\Missile\Missile1.bmp">
+      <Filter>Resource\Missile</Filter>
     </Image>
   </ItemGroup>
 </Project>

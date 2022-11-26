@@ -147,6 +147,7 @@
     <Image Include="Resource\background\background.bmp" />
     <Image Include="Resource\background\background2.bmp" />
     <Image Include="Resource\background\background3.bmp" />
+    <Image Include="Resource\Missile\Missile1.bmp" />
     <Image Include="Resource\Spaceship\Spaceship_fire.bmp" />
     <Image Include="Resource\Spaceship\Spaceship_nonfire.bmp" />
     <Image Include="Resource\Spaceship\Spaceship_strong_fire.bmp" />
