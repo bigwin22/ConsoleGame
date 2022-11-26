@@ -13,6 +13,8 @@
 #define ESC 27
 #define SPACE 32
 
+extern int Using_location;
+
 typedef struct _User
 {
 	int HP;

@@ -4,8 +4,7 @@
 #include <stdio.h>
 #include "Header/Define.h"
 
-
-
+int Using_location;
 
 int main()
 {
