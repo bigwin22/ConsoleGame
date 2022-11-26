@@ -78,6 +78,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleGame.c" />
+    <ClCompile Include="Header\Object.c">
+      <Filter>Header</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen.c">
+      <Filter>Header</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.c">
+      <Filter>Header</Filter>
+    </ClCompile>
+    <ClCompile Include="Judgement.c">
+      <Filter>Header</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resource\background\background.bmp">
