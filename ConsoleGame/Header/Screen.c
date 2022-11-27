@@ -1,4 +1,4 @@
-#include "Header/Console.h"
+#include "Console.h"
 
 void End_Game(int* score, int* high_score)
 {

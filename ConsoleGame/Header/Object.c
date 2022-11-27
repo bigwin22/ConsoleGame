@@ -7,19 +7,22 @@ void Misile_Func(struct Misile_args Misile_arg)
 {
 	Misile misile = Misile_arg.misile;
 	Image* images = Misile_arg.images;
+	int* missile_limit = Misile_arg.missile_limit;
 
-	images[2].fileName = "Resource/Missile/Missile1.bmp";
-	images[2].x = *(misile.x);
-	images[2].y = *(misile.y);
-	images[2].scale = 0.25;
+	int images_input = Images_Input_location(images);
+	
+	images[images_input].fileName = "Resource/Missile/Missile1.bmp";
+	images[images_input].x = *(misile.x);
+	images[images_input].y = *(misile.y);
+	images[images_input].scale = 0.25;
 
-	for (int i = 1; Boarder_Check(images[2].x, images[2].y - misile.speed); i++)
+	for (int i = 1; Boarder_Check(images[images_input].x, images[images_input].y - misile.speed); i++)
 	{
-		images[2].y -= misile.speed;
+		images[images_input].y -= misile.speed;
 		Sleep(10);
 	}
-	images[2].fileName = NULL, images[2].x = 0, images[2].y = 0, images[2].scale = 0;
-
+	images[images_input].fileName = NULL, images[images_input].x = 0, images[images_input].y = 0, images[images_input].scale = 0;
+	*missile_limit += 1;
 	return;
 
 }
@@ -31,7 +34,7 @@ void User_Move(User* user, Image* images)
 	if (_kbhit())
 	{
 		key = _getch();
-		struct Misile_args Misile_arg = { {((*user).x), ((*user).y), 1, (*user).damage, 2},images - (*user).lo };
+		struct Misile_args Misile_arg = { {((*user).x), ((*user).y), 1, (*user).damage, 2},images - (*user).lo, &((*user).Missile_limit)};
 		switch (key)
 		{
 		case LEFT:
@@ -63,7 +66,11 @@ void User_Move(User* user, Image* images)
 			}
 			break;
 		case SPACE:
-			hThread = (HANDLE)_beginthread(Misile_Func, 0, &Misile_arg);
+			if ((*user).Missile_limit > 0)
+			{
+				(*user).Missile_limit--;
+				hThread = (HANDLE)_beginthreadex(NULL, 0, Misile_Func, &Misile_arg, 0, NULL);
+			}
 			break;
 		}
 	}

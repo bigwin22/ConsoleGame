@@ -21,6 +21,7 @@ typedef struct _User
 	int speed;
 	int damage;
 	int lo;//Image에서 몇번째 이미지인지
+	int Missile_limit;
 }User;
 
 typedef struct _Misile
@@ -45,6 +46,7 @@ struct Misile_args
 {
 	Misile misile;
 	Image* images;
+	int* missile_limit;
 };
 
 

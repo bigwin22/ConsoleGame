@@ -7,7 +7,7 @@
 #include <conio.h>
 #include <time.h>
 
-#include "Header/Console.h"
+#include "Console.h"
 
 void gotoxy(int x, int y)
 {

@@ -127,11 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Console.c" />
     <ClCompile Include="ConsoleGame.c" />
+    <ClCompile Include="Header\Console.c" />
+    <ClCompile Include="Header\Judgement.c" />
     <ClCompile Include="Header\Object.c" />
-    <ClCompile Include="Judgement.c" />
-    <ClCompile Include="Screen.c" />
+    <ClCompile Include="Header\Screen.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Console.h" />

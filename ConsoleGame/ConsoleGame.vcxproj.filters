@@ -81,13 +81,13 @@
     <ClCompile Include="Header\Object.c">
       <Filter>Header</Filter>
     </ClCompile>
-    <ClCompile Include="Screen.c">
+    <ClCompile Include="Header\Screen.c">
       <Filter>Header</Filter>
     </ClCompile>
-    <ClCompile Include="Console.c">
+    <ClCompile Include="Header\Judgement.c">
       <Filter>Header</Filter>
     </ClCompile>
-    <ClCompile Include="Judgement.c">
+    <ClCompile Include="Header\Console.c">
       <Filter>Header</Filter>
     </ClCompile>
   </ItemGroup>

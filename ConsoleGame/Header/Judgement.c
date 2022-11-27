@@ -1,3 +1,5 @@
+#include "Image/ImageLayer.h"
+
 #define DEFAULT_CONSOLE_WIDTH 60  
 #define DEFAULT_CONSOLE_HEIGHT 43
 
@@ -34,5 +36,16 @@ int Keyboard_pressed()
 	else
 	{
 		return 0;
+	}
+}
+
+int Images_Input_location(Image* images)
+{
+	for (int i = 99; i >= 1; i--)
+	{
+		if (images[i].fileName == NULL)
+		{
+			return i;
+		}
 	}
 }
