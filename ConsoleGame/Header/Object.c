@@ -92,14 +92,18 @@ void User_update(User* user, Image* images)//Usesr update
 
 void MobGenerator(Image *images)
 {
-	//char list[100][100] = {"Resource/Mob/3q3/mob1.bmp", "Resource/Mob/3q3/mob2.bmp", "Resource/Mob/3q3/mob3.bmp", "Resource/Mob/3q3/mob4.bmp" }
-	while (1)	
+	char list[100][100] = { "Resource/Mob/3q3/mob1.bmp", "Resource/Mob/3q3/mob2.bmp", "Resource/Mob/3q3/mob3.bmp", "Resource/Mob/3q3/mob4.bmp", "Resource/Mob/3q3/mob5.bmp", "Resource/Mob/3q3/mob6.bmp", "Resource/Mob/3q3/mob7.bmp" };
+	for (int i = 1; ; i++)
 	{
 		int images_input = Images_Input_location(images);
-		
-		//images[images_input] = 
-		
-		//Sleep(10);
+		if (images_input == -1)
+		{
+			continue;
+		}
+		int mob_number = rand() % 7;
+		images[images_input].fileName = list[mob_number], images[images_input].x = 0, images[images_input].y = 0, images[images_input].scale = 0.25;
+		printf("%d", i);
+		Sleep(3000);
 	}
 
 }

@@ -30,7 +30,7 @@ int main()
 	images[99].scale = 0.25;
 
 
-	User user = {3, &images[99].x, &images[99].y, 10, 1,99,3};
+	User user = {3, &images[99].x, &images[99].y, 5, 1,99,3};
     
     srand(time(NULL));
     HANDLE hThread;
