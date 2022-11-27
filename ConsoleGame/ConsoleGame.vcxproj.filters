@@ -37,6 +37,9 @@
     <ClInclude Include="Header\Judgement.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Input.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

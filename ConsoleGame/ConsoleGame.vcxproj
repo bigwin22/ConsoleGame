@@ -140,6 +140,7 @@
     <ClInclude Include="Header\Image\ImageLayer.h" />
     <ClInclude Include="Header\Image\ImageLayerImpl.h" />
     <ClInclude Include="Header\Image\ImageLayerInterface.h" />
+    <ClInclude Include="Header\Input.h" />
     <ClInclude Include="Header\Judgement.h" />
     <ClInclude Include="Header\NewImage\ManyLayer.h" />
     <ClInclude Include="Header\NewImage\ManyLayerImplementation.h" />

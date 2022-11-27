@@ -1,7 +1,16 @@
 #include "Image/ImageLayer.h"
+#include <Windows.h>
+#include <WinUser.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
 
 #define DEFAULT_CONSOLE_WIDTH 60  
 #define DEFAULT_CONSOLE_HEIGHT 43
+
+INPUT_RECORD rec;
+DWORD dwNOER;
+HANDLE CIN = 0;
 
 int Boarder_Check(int x, int y)
 {
@@ -50,3 +59,6 @@ int Images_Input_location(Image* images)
 	}
 	return -1;
 }
+/// <summary>
+/// /////////////////////////////////////////////////////////////////////
+/// </summary>

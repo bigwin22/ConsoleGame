@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdlib.h>
 #include "Judgement.h"
+#include "Input.h"
 #include "Image/ImageLayer.h"
 
 
@@ -38,6 +39,7 @@ void Misile_Func(struct Misile_args Misile_arg)
 
 void User_Move(User* user, Image* images)
 {
+
 	HANDLE hThread;
 	int key = 0;
 	if (_kbhit())
@@ -46,42 +48,38 @@ void User_Move(User* user, Image* images)
 		struct Misile_args Misile_arg = { {((*user).x), ((*user).y), 8, (*user).damage, 2},images - (*user).lo, &((*user).Missile_limit)};
 		switch (key)
 		{
-		case LEFT:
-			if (Boarder_Check(*((*user).x) - (*user).speed, *((*user).y)) == 1)
-			{
-				*((*user).x) -= (*user).speed;
-				(*images).fileName = "Resource/Spaceship/Spaceship_fire.bmp";
-			}
-			break;
-		case RIGHT:
-			if (Boarder_Check(*((*user).x) + (*user).speed, *((*user).y)) == 1)
-			{
-				*((*user).x) += (*user).speed;
-				(*images).fileName = "Resource/Spaceship/Spaceship_fire.bmp";
-			}
-			break;
-		case UP:
-			if (Boarder_Check(*((*user).x), *((*user).y) - (*user).speed) == 1)
-			{
-				*((*user).y) -= (*user).speed;
-				(*images).fileName = "Resource/Spaceship/Spaceship_strong_fire.bmp";
-			}
-			break;
-		case DOWN:
-			if (Boarder_Check(*((*user).x), *((*user).y) + (*user).speed) == 1)
-			{
-				*((*user).y) += (*user).speed;
-				(*images).fileName = "Resource/Spaceship/Spaceship_nonfire.bmp";
-			}
-			break;
+		
 		case SPACE:
 			if ((*user).Missile_limit > 0)
 			{
 				(*user).Missile_limit--;
 				hThread = (HANDLE)_beginthreadex(NULL, 0, Misile_Func, &Misile_arg, 0, NULL);
 			}
+			
 			break;
 		}
+
+	}
+	//up down left right space
+	if (inputList.pressedList[0x26])
+	{
+		printf("up");
+	}
+	if (inputList.pressedList[0x28])
+	{
+		printf("down");
+	}
+	if (inputList.pressedList[0x25])
+	{
+		printf("left");
+	}
+	if (inputList.pressedList[0x27])
+	{
+		printf("right");
+	}
+	if (inputList.pressedList[0x20])
+	{
+		printf("space");
 	}
 }
 
@@ -93,12 +91,12 @@ void User_update(User* user, Image* images)//Usesr update
 
 void MobGenerator(Image *images)
 {
-	char list[100][100] = {"Resource/Mob/3q3/mob1.bmp", "Resource/Mob/3q3/mob2.bmp", "Resource/Mob/3q3/mob3.bmp", "Resource/Mob/3q3/mob4.bmp" }
-	while (1)
+	//char list[100][100] = {"Resource/Mob/3q3/mob1.bmp", "Resource/Mob/3q3/mob2.bmp", "Resource/Mob/3q3/mob3.bmp", "Resource/Mob/3q3/mob4.bmp" }
+	while (1)	
 	{
 		int images_input = Images_Input_location(images);
 		
-		images[images_input] = 
+		//images[images_input] = 
 		
 		//Sleep(10);
 	}

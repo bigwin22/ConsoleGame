@@ -39,9 +39,11 @@ int main()
 	
 
     hThread = (HANDLE)_beginthreadex(NULL, 0,MobGenerator, images, 0, NULL);
+	//hThread1 = (HANDLE)_beginthreadex(NULL, 0, Getinpu)
     while (1)
     {
 		print_score(score, high_score);
+        GetInput();
 		User_update(&user, &images[user.lo]);
 		imageLayer.renderAll(&imageLayer);
     }
