@@ -11,6 +11,11 @@ void Misile_Func(struct Misile_args Misile_arg)
 
 	int images_input = Images_Input_location(images);
 	
+	if (images_input == -1)
+	{
+		return;
+	}
+	
 	images[images_input].fileName = "Resource/Missile/Missile1.bmp";
 	images[images_input].x = *(misile.x);
 	images[images_input].y = *(misile.y);
@@ -34,7 +39,7 @@ void User_Move(User* user, Image* images)
 	if (_kbhit())
 	{
 		key = _getch();
-		struct Misile_args Misile_arg = { {((*user).x), ((*user).y), 1, (*user).damage, 2},images - (*user).lo, &((*user).Missile_limit)};
+		struct Misile_args Misile_arg = { {((*user).x), ((*user).y), 8, (*user).damage, 2},images - (*user).lo, &((*user).Missile_limit)};
 		switch (key)
 		{
 		case LEFT:

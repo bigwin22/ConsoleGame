@@ -41,11 +41,12 @@ int Keyboard_pressed()
 
 int Images_Input_location(Image* images)
 {
-	for (int i = 99; i >= 1; i--)
+	for (int i = 99; i >= 0; i--)
 	{
 		if (images[i].fileName == NULL)
 		{
 			return i;
 		}
 	}
+	return -1;
 }

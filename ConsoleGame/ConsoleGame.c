@@ -30,9 +30,9 @@ int main()
 	images[99].scale = 0.25;
 
 
-	User user = {3, &images[99].x, &images[99].y, 10, 1,99,1};
+	User user = {3, &images[99].x, &images[99].y, 10, 1,99,3};
     
-
+    srand(time(NULL));
     while (1)
     {
 		print_score(score, high_score);
