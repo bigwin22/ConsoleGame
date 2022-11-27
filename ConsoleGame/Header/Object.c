@@ -1,6 +1,8 @@
 #include "Object.h"
-
+#include <stdlib.h>
+#include <stdlib.h>
 #include "Judgement.h"
+#include "Image/ImageLayer.h"
 
 
 void Misile_Func(struct Misile_args Misile_arg)
@@ -31,6 +33,8 @@ void Misile_Func(struct Misile_args Misile_arg)
 	return;
 
 }
+
+
 
 void User_Move(User* user, Image* images)
 {
@@ -85,4 +89,18 @@ void User_update(User* user, Image* images)//Usesr update
 {
 	User_Move(user, images);
 	//printf("%p",images - (*user).lo);
+}
+
+void MobGenerator(Image *images)
+{
+	char list[100][100] = {"Resource/Mob/3q3/mob1.bmp", "Resource/Mob/3q3/mob2.bmp", "Resource/Mob/3q3/mob3.bmp", "Resource/Mob/3q3/mob4.bmp" }
+	while (1)
+	{
+		int images_input = Images_Input_location(images);
+		
+		images[images_input] = 
+		
+		//Sleep(10);
+	}
+
 }

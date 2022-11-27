@@ -53,5 +53,6 @@ struct Misile_args
 void Misile_Func(struct Misile_args Misile_arg);
 void User_Move(User* user, Image* images);
 void User_update(User* user, Image* images);
+void MobGenerator();
 
 

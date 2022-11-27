@@ -22,7 +22,6 @@ void print_score(int score, int high_score)
     printf("score:%03d", score);
     gotoxy(37, 42);
     printf("high score:%03d", high_score);
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x00);
 }
 
 

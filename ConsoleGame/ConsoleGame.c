@@ -33,6 +33,12 @@ int main()
 	User user = {3, &images[99].x, &images[99].y, 10, 1,99,3};
     
     srand(time(NULL));
+    HANDLE hThread;
+    //print hello
+
+	
+
+    hThread = (HANDLE)_beginthreadex(NULL, 0,MobGenerator, images, 0, NULL);
     while (1)
     {
 		print_score(score, high_score);
