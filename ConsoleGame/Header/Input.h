@@ -25,10 +25,13 @@ void GetInput()
         if (GetAsyncKeyState(checkKey) & 0x8000)
         {
             inputList.pressedList[checkKey] = true;
+            inputList.keyState[checkKey] = (inputList.keyState[checkKey] + 1) % 10;
+            printf("%d", inputList.keyState[checkKey]);
         }
         else
         {
             inputList.pressedList[checkKey] = false;
+            inputList.keyState[checkKey] = 0;
         }
 
         POINT _mousePos;

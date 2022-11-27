@@ -42,44 +42,45 @@ void User_Move(User* user, Image* images)
 
 	HANDLE hThread;
 	int key = 0;
-	if (_kbhit())
-	{
-		key = _getch();
-		struct Misile_args Misile_arg = { {((*user).x), ((*user).y), 8, (*user).damage, 2},images - (*user).lo, &((*user).Missile_limit)};
-		switch (key)
-		{
-		
-		case SPACE:
-			if ((*user).Missile_limit > 0)
-			{
-				(*user).Missile_limit--;
-				hThread = (HANDLE)_beginthreadex(NULL, 0, Misile_Func, &Misile_arg, 0, NULL);
-			}
-			
-			break;
-		}
-
-	}
+	struct Misile_args Misile_arg = { {((*user).x), ((*user).y), 8, (*user).damage, 2},images - (*user).lo, &((*user).Missile_limit) };
+	
 	//up down left right space
 	if (inputList.pressedList[0x26])
 	{
 		printf("up");
+		if (Boarder_Check(*((*user).x), *((*user).y) - (*user).speed))
+		{
+			*((*user).y) -= (*user).speed;
+		}
 	}
 	if (inputList.pressedList[0x28])
 	{
-		printf("down");
+		if (Boarder_Check(*((*user).x), *((*user).y) + (*user).speed))
+		{
+			*((*user).y) += (*user).speed;
+		}
 	}
 	if (inputList.pressedList[0x25])
 	{
-		printf("left");
+		if (Boarder_Check(*((*user).x) - (*user).speed, *((*user).y)))
+		{
+			*((*user).x) -= (*user).speed;
+		}
 	}
 	if (inputList.pressedList[0x27])
 	{
-		printf("right");
+		if (Boarder_Check(*((*user).x) + (*user).speed, *((*user).y)))
+		{
+			*((*user).x) += (*user).speed;
+		}
 	}
-	if (inputList.pressedList[0x20])
+	if (inputList.pressedList[0x20] && inputList.keyState[0x20] == 9)//얘 너무 빠른데
 	{
-		printf("space");
+		if ((*user).Missile_limit > 0)
+		{
+			(*user).Missile_limit--;
+			hThread = (HANDLE)_beginthreadex(NULL, 0, Misile_Func, &Misile_arg, 0, NULL);
+		}
 	}
 }
 
