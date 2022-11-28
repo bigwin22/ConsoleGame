@@ -9,6 +9,7 @@ typedef struct {
 	int x, y;
 	double scale;
 	int isHide;
+	int type; //-1: background, 0: User, 1: Mob, 2: Missile, 3: obstacle
 }Image;
 
 typedef struct _ImageLayer {

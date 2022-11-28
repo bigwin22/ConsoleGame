@@ -28,6 +28,7 @@ int main()
 	images[99].x = 10;
 	images[99].y = 1;
 	images[99].scale = 0.25;
+	images[99].type = 1;
 
 
 	User user = {3, &images[99].x, &images[99].y, 5, 1,99,3};

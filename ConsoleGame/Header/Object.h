@@ -49,6 +49,12 @@ struct Misile_args
 	int* missile_limit;
 };
 
+struct Mob_args
+{
+	Mob mob;
+	Image* images;
+};
+
 
 void Misile_Func(struct Misile_args Misile_arg);
 void User_Move(User* user, Image* images);
