@@ -1,5 +1,6 @@
 #include "Console.h"
 
+
 void End_Game(int* score, int* high_score)
 {
 	return;
@@ -15,6 +16,12 @@ void Start_Game(int* score, int* high_score)
 {
 	return;
 }
+
+/*
+* @brief 점수 출력
+* @param score : 현재 점수
+* @param high_score : 최고 점수
+*/
 void print_score(int score, int high_score)
 {
     gotoxy(1, 42);

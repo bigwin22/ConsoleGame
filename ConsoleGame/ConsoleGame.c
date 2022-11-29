@@ -4,14 +4,9 @@
 #include <stdio.h>
 #include "Header/Define.h"
 
-int Using_location;
-
 int main()
 {
-	int score = 0, high_score = 0;
-
-
-
+	int score = 0, high_score = 0;//점수
     Console_init();//콘솔 기본 설정
     ImageLayer imageLayer = DEFAULT_IMAGE_LAYER;
     imageLayer.initialize(&imageLayer); //초기화
@@ -28,13 +23,13 @@ int main()
 	images[99].x = 400;
 	images[99].y = 400;
 	images[99].scale = 0.25;
-	images[99].type = 0;
+	images[99].type = 0;//유저 객체 이미지에 대한 기본 설정
 
 
-	User user = {3, &images[99].x, &images[99].y, 5, 1,99,3};
+	User user = {3, &images[99].x, &images[99].y, 5, 1,99,3};//유저 객체에 대한 값 설정
     
     srand(time(NULL));
-    HANDLE hThread;
+	HANDLE hThread;//멀티프로세스 핸들
     //print hello
 
 	
@@ -43,8 +38,9 @@ int main()
     while (1)
     {
 		print_score(score, high_score);
-        GetInput();
-		User_update(&user, &images[user.lo]);
+        GetInput();//동시 입력 가능
+		User_update(&user, &images[user.lo]);//유저의 상태 업데이트
+		
 		imageLayer.renderAll(&imageLayer);
     }
 

@@ -11,7 +11,6 @@ void GetInput()
         {
             inputList.pressedList[checkKey] = true;
             inputList.keyState[checkKey] = (inputList.keyState[checkKey] + 1) % 10;
-            printf("%d", inputList.keyState[checkKey]);
         }
         else
         {

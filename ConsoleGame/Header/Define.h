@@ -6,6 +6,7 @@
 #include "Judgement.h"
 #include <stdio.h>
 
+//키보드 값(근데 멀티 키로 받을 때는 16진수라 크게 의미 없음)
 #define LEFT 75
 #define RIGHT 77
 #define UP 72
