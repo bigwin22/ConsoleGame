@@ -11,7 +11,7 @@
 */
 void Obstacle(Image* images, int x, int y)
 {
-	int image_input = Images_Input_location(images);
+	int image_input = Images_Input_location(images, 0);
 	if (image_input == -1)
 	{
 		return;
@@ -31,7 +31,7 @@ void Misile_Func(struct Misile_args Misile_arg)
 	Image* images = Misile_arg.images;
 	int* missile_limit = Misile_arg.missile_limit;
 
-	int images_input = Images_Input_location(images);
+	int images_input = Images_Input_location(images, 0);
 	
 	if (images_input == -1)//넣을데 없으면 리턴 
 	{
@@ -184,7 +184,7 @@ void MobGenerator(Image *images)
 	for (int i = 1; ; i++)
 	{
 		HANDLE hThread;
-		int images_input = Images_Input_location(images);
+		int images_input = Images_Input_location(images, 1);
 		if (images_input == -1)
 		{
 			continue;

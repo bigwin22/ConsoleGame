@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Object.h"
+#include <stdbool.h>
 
 /**
 * @brief		객체 충돌 감지 함수
@@ -15,8 +16,7 @@ struct Bumpped_range_args
 int Boarder_Check(int x, int y);
 int Bumpped(Image* images, int image_count, int obj_lo, int cnt, ...);
 int Keyboard_pressed();
-//int input_location = 0;
-int Images_Input_location(Image *images);
+int Images_Input_location(Image* images, bool direction);
 void GetInput();
 
 

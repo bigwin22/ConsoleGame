@@ -116,18 +116,31 @@ int Keyboard_pressed()
 /**
 * @brief 이미지를 넣을 수 있는 공간은 역순으로 찾아준다
 * @param images 이미지 배열
+* @param direction 0이면 순차대로 위치를 반환 , 1이면 역순으로 위치를 반환
 * @returns 이미지를 넣을 수 있는 공간의 인덱스
 */
-int Images_Input_location(Image* images)
+int Images_Input_location(Image* images, bool direction)
 {
-	for (int i = 99; i >= 0; i--)
+	switch (direction)
 	{
-		if (images[i].fileName == NULL)
+	case 0:
+		for (int i = 0; i < 100; i++)
 		{
-			//input_location = i;
-			return i;
+			if (images[i].fileName == NULL)
+			{
+				return i;
+			}
 		}
+		break;
+	case 1:
+		for (int i = 99; i >= 0; i--)
+		{
+			if (images[i].fileName == NULL)
+			{
+				return i;
+			}
+		}
+		break;
 	}
-	//input_location = -1;
 	return -1;
 }
