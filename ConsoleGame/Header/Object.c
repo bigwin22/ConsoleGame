@@ -31,12 +31,16 @@ void Misile_Func(struct Misile_args Misile_arg)
 	for (int i = 1; Boarder_Check(images[images_input].x, images[images_input].y - misile.speed); i++)
 	{
 		images[images_input].y -= misile.speed;
-		if (Bumpped(images, 100, images_input) == 1) {//충돌 감지
+		int bump = Bumpped(images, 100, images_input);
+		if (bump != -1 && images[bump].type == 1) {//충돌 감지
 			images[images_input].fileName = NULL;
 			images[images_input].x = 0;
 			images[images_input].y = 0;
 			images[images_input].scale = 0;
 			images[images_input].type = 0;
+
+			images[bump].fileName = NULL;
+			images[bump].status = 3;
 			break;
 		}
 		Sleep(10);
@@ -136,6 +140,14 @@ void Mob_Move(struct Mob_args args)
 			{
 				break;
 			}
+		}
+		if (images[mob.lo].fileName == NULL && images[mob.lo].status == 3) {//충돌 감지
+			images[mob.lo].fileName = NULL;
+			images[mob.lo].x = 0;
+			images[mob.lo].y = 0;
+			images[mob.lo].scale = 0;
+			images[mob.lo].type = 0;
+			break;
 		}
 		Sleep(100);
 	}

@@ -10,6 +10,7 @@ typedef struct {
 	double scale;
 	int isHide;
 	int type; //-1: background, 0: User, 1: Mob, 2: Missile, 3: obstacle
+	int status; //0: normal,  1:사인(유저 충돌), 2:사인(몹 충돌), 3:사인(미사일 충돌), 4:사인(장애물 충돌)
 }Image;
 
 typedef struct _ImageLayer {

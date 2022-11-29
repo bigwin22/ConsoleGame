@@ -61,7 +61,7 @@ int Bumpped_Check(struct Bumpped_range_args args1, struct Bumpped_range_args arg
 /// <param name="images">이미지 레이어 배열</param>
 /// <param name="image_count">레이어의 갯수</param>
 /// <param name="obj_lo">기준이 되는 오브젝트가 images에서 어디 있는지</param>
-/// <returns>충돌되는 객체의 타입</returns>
+/// <returns>충돌되는 객체의 위치</returns>
 int Bumpped(Image* images, int image_count, int obj_lo)//이미지 배열, 이미지 개수, 객체의 위치
 {
 	for (int i = image_count; i >= 0; i--)
@@ -74,7 +74,7 @@ int Bumpped(Image* images, int image_count, int obj_lo)//이미지 배열, 이미지 개�
 		struct Bumpped_range_args args2 = { images[i].x, images[i].y, images[i].scale };
 		if (Bumpped_Check(args1, args2))
 		{
-			return images[i].type;
+			return i;
 		}
 	}
 	return -1;
