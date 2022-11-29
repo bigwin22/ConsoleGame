@@ -124,8 +124,10 @@ int Images_Input_location(Image* images)
 	{
 		if (images[i].fileName == NULL)
 		{
+			//input_location = i;
 			return i;
 		}
 	}
+	//input_location = -1;
 	return -1;
 }

@@ -5,6 +5,21 @@
 #include "Input.h"
 #include "Image/ImageLayer.h"
 
+/*
+* @brief 장애물 생성
+* 
+*/
+void Obstacle(Image* images, int x, int y)
+{
+	int image_input = Images_Input_location(images);
+	if (image_input == -1)
+	{
+		return;
+	}
+	images[image_input].fileName = "Resource/Obstacle/Obstacle1.bmp", images[image_input].x = x, images[image_input].y = y+150, images[image_input].scale = 0.2, images[image_input].type = 3, images[image_input].status = 0;
+	//struct Obstacle obstacle = { 1, &images[].x, &images[OBSTACLE].y, OBSTACLE };
+}
+
 /**
 * @brief		미사일 객체 생성
 * @param struct Misile_args Misile_arg : 미사일 객체 생성에 필요한 값들
@@ -142,16 +157,20 @@ void Mob_Move(struct Mob_args args)
 			}
 		}
 		if (images[mob.lo].fileName == NULL && images[mob.lo].status == 3) {//충돌 감지
+			int x = *(mob.x), y = *(mob.y);
 			images[mob.lo].fileName = NULL;
 			images[mob.lo].x = 0;
 			images[mob.lo].y = 0;
 			images[mob.lo].scale = 0;
 			images[mob.lo].type = 0;
+			
+			Obstacle(images, x, y);
+			
 			break;
 		}
 		Sleep(100);
 	}
-	images[mob.lo].fileName = NULL, images[mob.lo].x = 0, images[mob.lo].y = 0, images[mob.lo].scale = 0;
+	images[mob.lo].fileName = NULL, images[mob.lo].x = 0, images[mob.lo].y = 0, images[mob.lo].scale = 0, images[mob.lo].status = 0;
 }
 
 /**

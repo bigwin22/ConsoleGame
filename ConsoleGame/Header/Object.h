@@ -95,6 +95,19 @@ struct Mob_args
 	Image* images;
 };
 
+/*
+* @brief 장애물 객체
+* @param HP: 체력
+* @param *x: images의 x 주소값
+* @param *y: images의 y 주소값
+* @param lo : images의 위치
+*/
+struct Obstacle
+{
+	int HP;
+	int* x, * y;
+	int lo;
+};
 
 void Misile_Func(struct Misile_args Misile_arg);
 void User_Move(User* user, Image* images);

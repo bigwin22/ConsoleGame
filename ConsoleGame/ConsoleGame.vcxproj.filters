@@ -81,6 +81,9 @@
     <Filter Include="Resource\Mob\Attacked">
       <UniqueIdentifier>{5a92f1d7-1ab6-453a-99d9-3a2124c946c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Obstacle">
+      <UniqueIdentifier>{10fa4642-b5a8-44c3-b748-487231145244}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleGame.c" />
@@ -205,6 +208,9 @@
     </Image>
     <Image Include="Resource\Mob\attacked\mob7.bmp">
       <Filter>Resource\Mob\Attacked</Filter>
+    </Image>
+    <Image Include="Resource\Obstacle\Obstacle1.bmp">
+      <Filter>Resource\Obstacle</Filter>
     </Image>
   </ItemGroup>
 </Project>
