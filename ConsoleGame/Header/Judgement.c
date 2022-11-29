@@ -4,6 +4,7 @@
 #include <WinUser.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdarg.h>
 
 
 #define DEFAULT_CONSOLE_WIDTH 60  
@@ -61,11 +62,31 @@ int Bumpped_Check(struct Bumpped_range_args args1, struct Bumpped_range_args arg
 /// <param name="images">이미지 레이어 배열</param>
 /// <param name="image_count">레이어의 갯수</param>
 /// <param name="obj_lo">기준이 되는 오브젝트가 images에서 어디 있는지</param>
+/// <param name="cnt">제외할 것들의 갯수</param>
+/// <param name="...">제외할 것들의 인덱스</param>
 /// <returns>충돌되는 객체의 위치</returns>
-int Bumpped(Image* images, int image_count, int obj_lo)//이미지 배열, 이미지 개수, 객체의 위치
+int Bumpped(Image* images, int image_count, int obj_lo, int cnt, ...)//이미지 배열, 이미지 개수, 객체의 위치, 제외할 것들
 {
+	va_list ap;
+	
+	va_start(ap, cnt);
+	int va[8] = {0};
+
+	for (int i = 0; i < cnt; i++)
+		va[i] = va_arg(ap, int);
 	for (int i = image_count; i >= 0; i--)
 	{
+		int exception = 0;//제외할 것과 겹쳤는지 판단하는 변수
+		for (int j = 0; j < cnt; j++)//제외할 것과 겹쳤는지 판단하는 반복문
+		{
+			if (images[i].type == va[j])
+			{
+				exception = 1;
+				break;
+			}
+		}
+		if (exception == 1)
+			continue;
 		if (i == obj_lo || images[i].fileName == NULL || images[i].type == -1)
 		{
 			continue;

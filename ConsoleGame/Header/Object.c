@@ -31,7 +31,7 @@ void Misile_Func(struct Misile_args Misile_arg)
 	for (int i = 1; Boarder_Check(images[images_input].x, images[images_input].y - misile.speed); i++)
 	{
 		images[images_input].y -= misile.speed;
-		int bump = Bumpped(images, 100, images_input);
+		int bump = Bumpped(images, 100, images_input,3,-1,0,2);
 		if (bump != -1 && images[bump].type == 1) {//충돌 감지
 			images[images_input].fileName = NULL;
 			images[images_input].x = 0;
