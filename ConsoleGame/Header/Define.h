@@ -3,6 +3,7 @@
 #include "Console.h"
 #include "Object.h"
 #include "Screen.h"
+#include "Judgement.h"
 #include <stdio.h>
 
 #define LEFT 75

@@ -17,7 +17,7 @@ int main()
     imageLayer.initialize(&imageLayer); //초기화
 
     Image images[100] = {
-        {"Resource/background/background3.bmp", 0, 0,1.4},
+        {"Resource/background/background3.bmp", 0, 0,1.4,0,-1},
     }; //배열의 첫 원소가 가장 아래 그려진다.
 
     imageLayer.imageCount = 100; //images 배열의 크기보다 작거나 같아야 한다.
@@ -25,10 +25,10 @@ int main()
 
 	
     images[99].fileName = "Resource/Spaceship/Spaceship_fire.bmp";
-	images[99].x = 10;
-	images[99].y = 1;
+	images[99].x = 400;
+	images[99].y = 400;
 	images[99].scale = 0.25;
-	images[99].type = 1;
+	images[99].type = 0;
 
 
 	User user = {3, &images[99].x, &images[99].y, 5, 1,99,3};
@@ -38,7 +38,6 @@ int main()
     //print hello
 
 	
-
     hThread = (HANDLE)_beginthreadex(NULL, 0,MobGenerator, images, 0, NULL);
 	//hThread1 = (HANDLE)_beginthreadex(NULL, 0, Getinpu)
     while (1)

@@ -28,6 +28,14 @@ void Misile_Func(struct Misile_args Misile_arg)
 	for (int i = 1; Boarder_Check(images[images_input].x, images[images_input].y - misile.speed); i++)
 	{
 		images[images_input].y -= misile.speed;
+		if (Bumpped(images, 100, images_input) == 1) {
+			images[images_input].fileName = NULL;
+			images[images_input].x = 0;
+			images[images_input].y = 0;
+			images[images_input].scale = 0;
+			images[images_input].type = 0;
+			break;
+		}
 		Sleep(10);
 	}
 	images[images_input].fileName = NULL, images[images_input].x = 0, images[images_input].y = 0, images[images_input].scale = 0;
@@ -113,7 +121,7 @@ void Mob_Move(struct Mob_args args)
 				break;
 			}
 		}
-		Sleep(50);
+		Sleep(100);
 	}
 	images[mob.lo].fileName = NULL, images[mob.lo].x = 0, images[mob.lo].y = 0, images[mob.lo].scale = 0;
 }
@@ -125,7 +133,7 @@ void MobGenerator(Image *images)
 	for (int i = 1; ; i++)
 	{
 		HANDLE hThread;
-		int images_input = Images_Input_location(images);
+		int images_input = Images_Input_location(images); 
 		if (images_input == -1)
 		{
 			continue;
@@ -134,7 +142,7 @@ void MobGenerator(Image *images)
 		images[images_input].fileName = list[mob_number], images[images_input].x = 0, images[images_input].y = 0, images[images_input].scale = 0.25, images[images_input].type = 1;
 		struct Mob_args args = {{3,3,&images[images_input].x, &images[images_input].y, 10, 1, images_input},images};
 		hThread = (HANDLE)_beginthreadex(NULL, 0, Mob_Move, &args, 0, NULL);
-		Sleep(3000);
+		Sleep(2000);
 	}
 
 }

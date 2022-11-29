@@ -1,4 +1,5 @@
 #include "Image/ImageLayer.h"
+#include "Judgement.h"
 #include <Windows.h>
 #include <WinUser.h>
 #include <stdlib.h>
@@ -24,9 +25,15 @@ int Boarder_Check(int x, int y)
 	}
 }
 
-int Attacked(int x, int y, int x1, int y1, int x2, int y2)
+
+int Bumpped_Check(struct Bumpped_range_args args1, struct Bumpped_range_args args2)
 {
-	if (x >= x1 && x <= x2 && y >= y1 && y <= y2)
+    //width is 500*args.size
+	//height is 500*args.size
+	const double width1 = 500 * args1.scale;
+	const double width2 = 500 * args2.scale;
+	
+	if ((args1.x <= args2.x + width2 && args1.y <= args2.y + width2) && (args1.x+width1 >= args2.x && args1.y+width1 >= args2.y))
 	{
 		return 1;
 	}
@@ -34,6 +41,25 @@ int Attacked(int x, int y, int x1, int y1, int x2, int y2)
 	{
 		return 0;
 	}
+}
+
+int Bumpped(Image* images, int image_count, int obj_lo)//이미지 배열, 이미지 개수, 객체의 위치
+{
+	for (int i = 0; i < image_count; i++)
+	{
+		if (i == obj_lo || images[i].fileName == NULL || images[i].type == -1)
+		{
+			continue;
+		}
+		struct Bumpped_range_args args1 = { images[obj_lo].x, images[obj_lo].y, images[obj_lo].scale };
+		struct Bumpped_range_args args2 = { images[i].x, images[i].y, images[i].scale };
+		if (Bumpped_Check(args1, args2))
+		{
+			printf("Bummped");
+			return images[i].type;
+		}
+	}
+	return -1;
 }
 
 int Keyboard_pressed()
