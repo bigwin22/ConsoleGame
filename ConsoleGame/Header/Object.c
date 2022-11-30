@@ -26,6 +26,7 @@ void Obstacle(Image* images, int x, int y)
 		if (images[image_input].status == 3) {
 			images[image_input].fileName = NULL, images[image_input].x = 0, images[image_input].y = 0, images[image_input].scale = 0, images[image_input].type = 0, images[image_input].status = 0;
 			score += 5;
+			playSound("Resource/Sound/SoundEffect/ObstacleAttacked.wav");
 			return;
 		}
 	}
@@ -193,6 +194,11 @@ void Mob_Move(struct Mob_args args)
 
 	while (1)
 	{
+		extern User user;
+		if (user.HP <= 0)
+		{
+			break;
+		}
 		if (Boarder_Check(*(mob.x) + mob.speed, *(mob.y)))
 		{
 			*(mob.x) += mob.speed;
@@ -237,6 +243,7 @@ void Mob_Move(struct Mob_args args)
 			score -= 100;
 
 			extern User user;
+			playSound("Resource/Sound/SoundEffect/wav/UserAttacked.wav");
 			user.HP -= 1;
 			return;
 		}
@@ -255,6 +262,11 @@ void MobGenerator(Image *images)
 	char list[100][100] = { "Resource/Mob/3q3/mob1.bmp", "Resource/Mob/3q3/mob2.bmp", "Resource/Mob/3q3/mob3.bmp", "Resource/Mob/3q3/mob4.bmp", "Resource/Mob/3q3/mob5.bmp", "Resource/Mob/3q3/mob6.bmp", "Resource/Mob/3q3/mob7.bmp" };
 	for (int i = 1; ; i++)
 	{
+		extern User user;
+		if (user.HP <= 0)
+		{
+			break;
+		}
 		HANDLE hThread;
 		int images_input = Images_Input_location(images, 1);
 		if (images_input == -1)
