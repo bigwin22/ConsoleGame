@@ -76,12 +76,12 @@ void In_game()
 			images[0].fileName = "Resource/background/background4.bmp";
 			images[0].scale = 1.4;
         }
-        if (score > 5000)
+        if (score > 3000)
         {
 			images[0].fileName = "Resource/background/background5.bmp";
 			images[0].scale = 1.4;
         }
-		if (score > 15000)
+		if (score > 5000)
 		{
 			images[0].fileName = "Resource/background/background6.bmp";
 			images[0].scale = 1.4;
