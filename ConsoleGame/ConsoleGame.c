@@ -3,9 +3,17 @@
 
 #include <stdio.h>
 #include "Header/Define.h"
+#include "Header/easyAudio.h"
+#include <tchar.h>
+#include <windows.h>
+#include <strsafe.h>
+
+
+User user;//유저 객체에 대한 값 설정
 int score = 0, high_score = 0;//점수
 int main()
 {
+   // playBGM("Resource/Sound/");
 	
     Console_init();//콘솔 기본 설정
     ImageLayer imageLayer = DEFAULT_IMAGE_LAYER;
@@ -25,19 +33,18 @@ int main()
 	images[99].scale = 0.25;
 	images[99].type = 0;//유저 객체 이미지에 대한 기본 설정
 
+	user.HP = 3, user.x = &images[99].x, user.y = &images[99].y, user.speed = 5, user.lo = 99, user.Missile_limit = 3, user.damage = 1;//유저 객체에 대한 값 설정
 
-	User user = {3, &images[99].x, &images[99].y, 5, 1,99,3};//유저 객체에 대한 값 설정
     
     srand(time(NULL));
 	HANDLE hThread;//멀티프로세스 핸들
     //print hello
 
-	
     hThread = (HANDLE)_beginthreadex(NULL, 0,MobGenerator, images, 0, NULL);
 	//hThread1 = (HANDLE)_beginthreadex(NULL, 0, Getinpu)
     while (1)
     {
-		print_score(score, high_score);
+		print_info(score, high_score, user);
         GetInput();//동시 입력 가능
 		User_update(&user, images);//유저의 상태 업데이트
 		

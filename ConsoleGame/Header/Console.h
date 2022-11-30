@@ -12,7 +12,7 @@
 #define DEFAULT_CONSOLE_WIDTH 60  //기본 콘솔 크기
 #define DEFAULT_CONSOLE_HEIGHT 43 //기본 콘솔 크기
 
-#pragma comment(lib, "winmm.lib")
+//#pragma comment(lib, "winmm.lib")
 
 void gotoxy(int x, int y);
 void ReSizeConsole(int w, int h);

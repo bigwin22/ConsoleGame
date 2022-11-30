@@ -4,6 +4,7 @@
 #include "Judgement.h"
 #include "Input.h"
 #include "Image/ImageLayer.h"
+#include "easyAudio.h"
 
 /*
 * @brief 장애물 생성
@@ -156,9 +157,16 @@ void User_Move(User* user, Image* images)
 	{
 		if ((*user).Missile_limit > 0)
 		{
+			playSound("Resource/Sound/SoundEffect/wav/shooting.wav");
 			(*user).Missile_limit--;//갯수 차감
 			hThread = (HANDLE)_beginthreadex(NULL, 0, Misile_Func, &Misile_arg, 0, NULL);//발사(객체는 함수에서 생성)
 		}
+	}
+	
+	int bumpped = Bumpped(images, 100, (*user).lo, 3, -1, 0, 2);
+	if (images[bumpped].type == 1)
+	{
+		images[bumpped].status = 1;
 	}
 }
 
@@ -210,10 +218,26 @@ void Mob_Move(struct Mob_args args)
 			images[mob.lo].status = 0;
 
 			extern int score;
+			playSound("Resource/Sound/SoundEffect/wav/dead.wav");
 			score += 100;
 			
 			Obstacle(images, x, y);
 			
+			return;
+		}
+		if (images[mob.lo].status == 1)
+		{
+			extern int score;
+			images[mob.lo].fileName = NULL;
+			images[mob.lo].x = 0;
+			images[mob.lo].y = 0;
+			images[mob.lo].scale = 0;
+			images[mob.lo].type = 0;
+			images[mob.lo].status = 0;
+			score -= 100;
+
+			extern User user;
+			user.HP -= 1;
 			return;
 		}
 		Sleep(100);

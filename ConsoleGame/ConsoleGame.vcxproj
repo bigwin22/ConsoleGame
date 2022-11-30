@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="Header\Console.h" />
     <ClInclude Include="Header\Define.h" />
+    <ClInclude Include="Header\easyAudio.h" />
     <ClInclude Include="Header\Image\ImageFading.h" />
     <ClInclude Include="Header\Image\ImageLayer.h" />
     <ClInclude Include="Header\Image\ImageLayerImpl.h" />
