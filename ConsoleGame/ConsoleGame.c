@@ -14,9 +14,7 @@ int score = 0, high_score = 0;//점수
 
 void In_game()
 {
-    FILE* fp;
-    fp = fopen("High.txt", "w+");
-	fscanf(fp, "%d", &high_score);
+
     score = 0;
     Console_init();//콘솔 기본 설정
     ImageLayer imageLayer = DEFAULT_IMAGE_LAYER;
@@ -47,6 +45,10 @@ void In_game()
     //hThread1 = (HANDLE)_beginthreadex(NULL, 0, Getinpu)
     while (1)
     {
+        FILE* fp;
+        fp = fopen("High.txt", "r");
+        fscanf(fp, "%d", &high_score);
+        fclose(fp);
         print_info(score, high_score, user);
         GetInput();//동시 입력 가능
         User_update(&user, images);//유저의 상태 업데이트
@@ -55,7 +57,6 @@ void In_game()
             if (End_Game(&score, &high_score) == 1)
             {
                 In_game();
-                fclose(fp);
                 return;
             }
             else {
@@ -65,7 +66,25 @@ void In_game()
 		if (score > high_score)
 		{
 			high_score = score;
+            FILE* fp;
+            fp = fopen("High.txt", "w");
 			fprintf(fp, "%d", high_score);
+            fclose(fp);
+		}
+        if (score > 1000)
+        {
+			images[0].fileName = "Resource/background/background4.bmp";
+			images[0].scale = 1.4;
+        }
+        if (score > 5000)
+        {
+			images[0].fileName = "Resource/background/background5.bmp";
+			images[0].scale = 1.4;
+        }
+		if (score > 15000)
+		{
+			images[0].fileName = "Resource/background/background6.bmp";
+			images[0].scale = 1.4;
 		}
         imageLayer.renderAll(&imageLayer);
     }

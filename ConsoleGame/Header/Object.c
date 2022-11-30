@@ -10,7 +10,7 @@
 * @brief 厘局拱 积己
 * 
 */
-void Obstacle(Image* images, int x, int y)
+void Obstacle(Image* images, int x, int y, int hp)
 {
 	if (!Boarder_Check(x, y)) return;
 	
@@ -24,10 +24,16 @@ void Obstacle(Image* images, int x, int y)
 	while (1)
 	{
 		if (images[image_input].status == 3) {
-			images[image_input].fileName = NULL, images[image_input].x = 0, images[image_input].y = 0, images[image_input].scale = 0, images[image_input].type = 0, images[image_input].status = 0;
-			score += 5;
 			playSound("Resource/Sound/SoundEffect/ObstacleAttacked.wav");
-			return;
+			if (hp == 0)
+			{
+				images[image_input].fileName = NULL, images[image_input].x = 0, images[image_input].y = 0, images[image_input].scale = 0, images[image_input].type = 0, images[image_input].status = 0;
+				score += 5;
+				return;
+			}
+			hp -= 1;
+			images[image_input].status = 0;
+			continue;
 		}
 	}
 
@@ -211,29 +217,36 @@ void Mob_Move(struct Mob_args args)
 			}
 			else
 			{
+				extern User user;
+				user.HP -= 1;
 				break;
 			}
 		}
 		if (images[mob.lo].status == 3) {//面倒 皑瘤
 			int x = *(mob.x), y = *(mob.y);
-			images[mob.lo].fileName = NULL;
-			images[mob.lo].x = 0;
-			images[mob.lo].y = 0;
-			images[mob.lo].scale = 0;
-			images[mob.lo].type = 0;
+			mob.HP -= 1;
+			if (mob.HP == 0)
+			{
+				images[mob.lo].fileName = NULL;
+				images[mob.lo].x = 0;
+				images[mob.lo].y = 0;
+				images[mob.lo].scale = 0;
+				images[mob.lo].type = 0;
+				images[mob.lo].status = 0;	
+				extern int score;
+				score += 100;
+				Obstacle(images, x, y, rand() % (score / 800 + 1) + 1);				
+				return;
+			}
 			images[mob.lo].status = 0;
-
-			extern int score;
 			playSound("Resource/Sound/SoundEffect/wav/dead.wav");
-			score += 100;
-			
-			Obstacle(images, x, y);
-			
-			return;
+			continue;
 		}
 		if (images[mob.lo].status == 1)
 		{
 			extern int score;
+			mob.HP -= 1;
+			
 			images[mob.lo].fileName = NULL;
 			images[mob.lo].x = 0;
 			images[mob.lo].y = 0;
@@ -275,9 +288,10 @@ void MobGenerator(Image *images)
 		}
 		int mob_number = rand() % 7;//各 辆幅 罚待
 		images[images_input].fileName = list[mob_number], images[images_input].x = 0, images[images_input].y = 0, images[images_input].scale = 0.25, images[images_input].type = 1, images[images_input].status = 0;//按眉 积己
-		struct Mob_args args = {{3,3,&images[images_input].x, &images[images_input].y, 10, 1, images_input},images};//args积己
+		extern int score;
+		struct Mob_args args = {{3,3,&images[images_input].x, &images[images_input].y, rand()%(score/1000+10)+1, rand()%3+1, images_input},images};//args积己
 		hThread = (HANDLE)_beginthreadex(NULL, 0, Mob_Move, &args, 0, NULL);//各 捞悼
-		Sleep(2000);
+		Sleep(1000*(rand()%3+3));
 	}
 
 }

@@ -88,7 +88,6 @@ struct Misile_args
 * @brief 몹 함수에 필요한 파라미터
 * @param Mob mob : 몹 객체
 * @param Image *images : 이미지 객체
-* @param User user : 유저 객체
 */
 struct Mob_args
 {
