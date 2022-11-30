@@ -102,6 +102,10 @@ void print_info(int score, int high_score, User user)
     gotoxy(25, 42);
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x30);
 	printf("HP:%d", user.HP);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x60);
+    gotoxy(30, 42);
+    printf("Stage:%d", score / 1000);
+	
 }
 
 
