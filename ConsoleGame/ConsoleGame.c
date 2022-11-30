@@ -39,7 +39,7 @@ int main()
     {
 		print_score(score, high_score);
         GetInput();//동시 입력 가능
-		User_update(&user, &images[user.lo]);//유저의 상태 업데이트
+		User_update(&user, images);//유저의 상태 업데이트
 		
 		imageLayer.renderAll(&imageLayer);
     }

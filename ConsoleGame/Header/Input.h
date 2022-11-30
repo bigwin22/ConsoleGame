@@ -28,7 +28,7 @@ void GetInput()
         if (GetAsyncKeyState(checkKey) & 0x8000)
         {
             inputList.pressedList[checkKey] = true;//키 눌림 저장
-			inputList.keyState[checkKey] = (inputList.keyState[checkKey] + 1) % 10;//반복 입력 방지를 위해 10으로 나눈 나머지 저장
+			inputList.keyState[checkKey] = (inputList.keyState[checkKey] + 1) % 15;//반복 입력 방지를 위해 15으로 나눈 나머지 저장
         }
         else
         {

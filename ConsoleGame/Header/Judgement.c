@@ -74,12 +74,13 @@ int Bumpped(Image* images, int image_count, int obj_lo, int cnt, ...)//이미지 배
 
 	for (int i = 0; i < cnt; i++)
 		va[i] = va_arg(ap, int);
-	for (int i = image_count; i >= 0; i--)
+	for (int i = image_count-1; i >= 0; i--)
 	{
 		int exception = 0;//제외할 것과 겹쳤는지 판단하는 변수
 		for (int j = 0; j < cnt; j++)//제외할 것과 겹쳤는지 판단하는 반복문
 		{
-			if (images[i].type == va[j])
+			int type = images[i].type;
+			if (type == va[j])
 			{
 				exception = 1;
 				break;

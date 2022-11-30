@@ -16,10 +16,11 @@ void Obstacle(Image* images, int x, int y)
 	{
 		return;
 	}
-	images[image_input].fileName = "Resource/Obstacle/Obstacle1.bmp", images[image_input].x = x, images[image_input].y = y+150, images[image_input].scale = 0.2, images[image_input].type = 3, images[image_input].status = 0;
-	//struct Obstacle obstacle = { 1, &images[].x, &images[OBSTACLE].y, OBSTACLE };
-}
+	images[image_input].fileName = "Resource/Obstacle/Obstacle1.bmp", images[image_input].x = x, images[image_input].y = y + 150, images[image_input].scale = 0.2, images[image_input].type = 3, images[image_input].status = 0;
 
+}
+	//struct Obstacle obstacle = { 1, &images[].x, &images[OBSTACLE].y, OBSTACLE };
+   
 /**
 * @brief		미사일 객체 생성
 * @param struct Misile_args Misile_arg : 미사일 객체 생성에 필요한 값들
@@ -77,38 +78,38 @@ void User_Move(User* user, Image* images)
 {
 
 	HANDLE hThread;//스레드 핸들
-	struct Misile_args Misile_arg = { {((*user).x), ((*user).y), 8, (*user).damage, 2},images - (*user).lo, &((*user).Missile_limit) };// 미사일 객체 생성에 필요한 값들
+	struct Misile_args Misile_arg = { {((*user).x), ((*user).y), 8, (*user).damage, 2},images, &((*user).Missile_limit) };// 미사일 객체 생성에 필요한 값들
 	
 	//up down left right space
 	if (inputList.pressedList[0x26])
 	{
-		if (Boarder_Check(*((*user).x), *((*user).y) - (*user).speed))
+		if (Boarder_Check(*((*user).x), *((*user).y) - (*user).speed) && Bumpped(images,100,(*user).lo, 3, -1, 0, 2) == -1)
 		{
 			*((*user).y) -= (*user).speed;
 		}
 	}
 	if (inputList.pressedList[0x28])
 	{
-		if (Boarder_Check(*((*user).x), *((*user).y) + (*user).speed))
+		if (Boarder_Check(*((*user).x), *((*user).y) + (*user).speed) && Bumpped(images, 100, (*user).lo, 3, -1, 0, 2) == -1)
 		{
 			*((*user).y) += (*user).speed;
 		}
 	}
-	if (inputList.pressedList[0x25])
+	if (inputList.pressedList[0x25] && Bumpped(images, 100, (*user).lo, 3, -1, 0, 2) == -1)
 	{
 		if (Boarder_Check(*((*user).x) - (*user).speed, *((*user).y)))
 		{
 			*((*user).x) -= (*user).speed;
 		}
 	}
-	if (inputList.pressedList[0x27])
+	if (inputList.pressedList[0x27] && Bumpped(images, 100, (*user).lo, 3, -1, 0, 2) == -1)
 	{
 		if (Boarder_Check(*((*user).x) + (*user).speed, *((*user).y)))
 		{
 			*((*user).x) += (*user).speed;
 		}
 	}
-	if (inputList.pressedList[0x20] && inputList.keyState[0x20] == 9)//미사일 발사(딜레이를 위해 9 조건 추가)
+	if (inputList.pressedList[0x20] && inputList.keyState[0x20] == 14)//미사일 발사(딜레이를 위해 9 조건 추가)
 	{
 		if ((*user).Missile_limit > 0)
 		{
