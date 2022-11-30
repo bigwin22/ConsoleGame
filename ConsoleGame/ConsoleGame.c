@@ -3,10 +3,10 @@
 
 #include <stdio.h>
 #include "Header/Define.h"
-
+int score = 0, high_score = 0;//점수
 int main()
 {
-	int score = 0, high_score = 0;//점수
+	
     Console_init();//콘솔 기본 설정
     ImageLayer imageLayer = DEFAULT_IMAGE_LAYER;
     imageLayer.initialize(&imageLayer); //초기화

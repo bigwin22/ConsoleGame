@@ -11,12 +11,23 @@
 */
 void Obstacle(Image* images, int x, int y)
 {
+	if (!Boarder_Check(x, y)) return;
+	
+	extern int score;
 	int image_input = Images_Input_location(images, 0);
 	if (image_input == -1)
 	{
 		return;
 	}
 	images[image_input].fileName = "Resource/Obstacle/Obstacle1.bmp", images[image_input].x = x, images[image_input].y = y + 150, images[image_input].scale = 0.2, images[image_input].type = 3, images[image_input].status = 0;
+	while (1)
+	{
+		if (images[image_input].status == 3) {
+			images[image_input].fileName = NULL, images[image_input].x = 0, images[image_input].y = 0, images[image_input].scale = 0, images[image_input].type = 0, images[image_input].status = 0;
+			score += 5;
+			return;
+		}
+	}
 
 }
 	//struct Obstacle obstacle = { 1, &images[].x, &images[OBSTACLE].y, OBSTACLE };
@@ -43,19 +54,19 @@ void Misile_Func(struct Misile_args Misile_arg)
 	images[images_input].x =  *(misile.x), images[images_input].y = *(misile.y);
 	images[images_input].scale = 0.25;
 	images[images_input].type = 2;
+	images[images_input].status = 0;
 
 	for (int i = 1; Boarder_Check(images[images_input].x, images[images_input].y - misile.speed); i++)
 	{
 		images[images_input].y -= misile.speed;
 		int bump = Bumpped(images, 100, images_input,3,-1,0,2);
-		if (bump != -1 && images[bump].type == 1) {//충돌 감지
+		if (bump != -1 && (images[bump].type == 1 || images[bump].type == 3)) {//충돌 감지
 			images[images_input].fileName = NULL;
 			images[images_input].x = 0;
 			images[images_input].y = 0;
 			images[images_input].scale = 0;
 			images[images_input].type = 0;
 
-			images[bump].fileName = NULL;
 			images[bump].status = 3;
 			break;
 		}
@@ -82,32 +93,64 @@ void User_Move(User* user, Image* images)
 	
 	//up down left right space
 	if (inputList.pressedList[0x26])
-	{
-		if (Boarder_Check(*((*user).x), *((*user).y) - (*user).speed) && Bumpped(images,100,(*user).lo, 3, -1, 0, 2) == -1)
+	{		
+		if (Boarder_Check(*((*user).x), *((*user).y) - (*user).speed))
 		{
 			*((*user).y) -= (*user).speed;
 		}
+		if (Bumpped(images, 100, (*user).lo, 4, -1, 0, 2,1) != -1)
+		{
+			if (Boarder_Check(*((*user).x), *((*user).y) +10))
+			{
+				*((*user).y) += 10;
+			}
+		}
+
 	}
 	if (inputList.pressedList[0x28])
-	{
-		if (Boarder_Check(*((*user).x), *((*user).y) + (*user).speed) && Bumpped(images, 100, (*user).lo, 3, -1, 0, 2) == -1)
+	{		
+		if (Boarder_Check(*((*user).x), *((*user).y) + (*user).speed))
 		{
 			*((*user).y) += (*user).speed;
 		}
+		if (Bumpped(images, 100, (*user).lo, 4, -1, 0, 2,1) != -1)
+		{
+			if (Boarder_Check(*((*user).x), *((*user).y) - 10))
+			{
+				*((*user).y) -= 10;
+			}
+		}
+
 	}
-	if (inputList.pressedList[0x25] && Bumpped(images, 100, (*user).lo, 3, -1, 0, 2) == -1)
-	{
+	if (inputList.pressedList[0x25])
+	{		
 		if (Boarder_Check(*((*user).x) - (*user).speed, *((*user).y)))
 		{
 			*((*user).x) -= (*user).speed;
 		}
+		if (Bumpped(images, 100, (*user).lo, 4, -1, 0, 2,1) != -1)
+		{
+			if (Boarder_Check(*((*user).x)+10, *((*user).y)))
+			{
+				*((*user).x) += 10;
+			}
+		}
+
 	}
-	if (inputList.pressedList[0x27] && Bumpped(images, 100, (*user).lo, 3, -1, 0, 2) == -1)
-	{
+	if (inputList.pressedList[0x27])
+	{		
 		if (Boarder_Check(*((*user).x) + (*user).speed, *((*user).y)))
 		{
 			*((*user).x) += (*user).speed;
 		}
+		if (Bumpped(images, 100, (*user).lo, 4, -1, 0, 2,1) != -1)
+		{
+			if (Boarder_Check(*((*user).x)-10, *((*user).y)))
+			{
+				*((*user).x) -= 10;
+			}
+		}
+
 	}
 	if (inputList.pressedList[0x20] && inputList.keyState[0x20] == 14)//미사일 발사(딜레이를 위해 9 조건 추가)
 	{
@@ -157,17 +200,21 @@ void Mob_Move(struct Mob_args args)
 				break;
 			}
 		}
-		if (images[mob.lo].fileName == NULL && images[mob.lo].status == 3) {//충돌 감지
+		if (images[mob.lo].status == 3) {//충돌 감지
 			int x = *(mob.x), y = *(mob.y);
 			images[mob.lo].fileName = NULL;
 			images[mob.lo].x = 0;
 			images[mob.lo].y = 0;
 			images[mob.lo].scale = 0;
 			images[mob.lo].type = 0;
+			images[mob.lo].status = 0;
+
+			extern int score;
+			score += 100;
 			
 			Obstacle(images, x, y);
 			
-			break;
+			return;
 		}
 		Sleep(100);
 	}
@@ -191,7 +238,7 @@ void MobGenerator(Image *images)
 			continue;
 		}
 		int mob_number = rand() % 7;//몹 종류 랜덤
-		images[images_input].fileName = list[mob_number], images[images_input].x = 0, images[images_input].y = 0, images[images_input].scale = 0.25, images[images_input].type = 1;//객체 생성
+		images[images_input].fileName = list[mob_number], images[images_input].x = 0, images[images_input].y = 0, images[images_input].scale = 0.25, images[images_input].type = 1, images[images_input].status = 0;//객체 생성
 		struct Mob_args args = {{3,3,&images[images_input].x, &images[images_input].y, 10, 1, images_input},images};//args생성
 		hThread = (HANDLE)_beginthreadex(NULL, 0, Mob_Move, &args, 0, NULL);//몹 이동
 		Sleep(2000);
