@@ -52,49 +52,45 @@ void In_game()
 
     hThread = (HANDLE)_beginthreadex(NULL, 0, MobGenerator, images, 0, NULL);
     //hThread1 = (HANDLE)_beginthreadex(NULL, 0, Getinpu)
+    FILE* fp;
+    fp = fopen("High.txt", "r");
+    fscanf(fp, "%d", &high_score);
     while (1)
     {
-        FILE* fp;
-        fp = fopen("High.txt", "r");
-        fscanf(fp, "%d", &high_score);
         fclose(fp);
         print_info(score, high_score, user);
         GetInput();//동시 입력 가능
         User_update(&user, images);//유저의 상태 업데이트
         if (user.HP <= 0)
         {
+            FILE* fp;
+            fp = fopen("High.txt", "w");
+            fprintf(fp, "%d", high_score);
+            fclose(fp);
             if (End_Game(&score, &high_score) == 1)
             {
                 In_game();
                 return;
             }
             else {
-                fclose(fp); return;
+                return;
             }
         }
 		if (score > high_score)
 		{
 			high_score = score;
-            FILE* fp;
-            fp = fopen("High.txt", "w");
-			fprintf(fp, "%d", high_score);
-            fclose(fp);
+
 		}
-        if (score > 1000)
+        if (score%1000 <= 9)
         {
 			images[0].fileName = "Resource/background/background4.bmp";
 			images[0].scale = 1.4;
         }
-        if (score > 3000)
+        if (score%3000 <= 9)
         {
-			images[0].fileName = "Resource/background/background5.bmp";
+			images[0].fileName = "Resource/background/background3.bmp";
 			images[0].scale = 1.4;
         }
-		if (score > 5000)
-		{
-			images[0].fileName = "Resource/background/background6.bmp";
-			images[0].scale = 1.4;
-		}
         imageLayer.renderAll(&imageLayer);
     }
 

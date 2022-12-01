@@ -235,7 +235,7 @@ void Mob_Move(struct Mob_args args)
 				images[mob.lo].status = 0;	
 				extern int score;
 				score += 100;
-				Obstacle(images, x, y, rand() % (score / 800 + 1) + 1);				
+				Obstacle(images, x, y, rand() % (score / 400 + 1) + 1);				
 				return;
 			}
 			images[mob.lo].status = 0;
@@ -289,7 +289,7 @@ void MobGenerator(Image *images)
 		int mob_number = rand() % 7;//各 辆幅 罚待
 		images[images_input].fileName = list[mob_number], images[images_input].x = 0, images[images_input].y = 0, images[images_input].scale = 0.25, images[images_input].type = 1, images[images_input].status = 0;//按眉 积己
 		extern int score;
-		struct Mob_args args = {{3,3,&images[images_input].x, &images[images_input].y, rand()%(score/1000+10)+1, rand()%3+1, images_input},images};//args积己
+		struct Mob_args args = {{3,3,&images[images_input].x, &images[images_input].y, rand()%(score/100+10)+5, rand() % (score / 100 + 10) + 1, images_input},images};//args积己
 		hThread = (HANDLE)_beginthreadex(NULL, 0, Mob_Move, &args, 0, NULL);//各 捞悼
 		Sleep(1000*(rand()%3+3));
 	}

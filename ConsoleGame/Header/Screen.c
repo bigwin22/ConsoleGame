@@ -11,7 +11,9 @@ int End_Game(int* score, int* high_score)
     gotoxy(18,15);
 	printf("Game Over");
 	gotoxy(18, 16);
-	printf("Your Score : %d", *score);
+	printf("Your Score : %d\n\n", *score);
+	printf("   Press Mouse Left Button to Restart(Right Button to Exit)\n");
+	
 	
     SetConsoleMode(GetStdHandle(STD_INPUT_HANDLE), ENABLE_PROCESSED_INPUT | ENABLE_MOUSE_INPUT);
 
