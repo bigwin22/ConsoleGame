@@ -19,6 +19,8 @@ HP가 0이되면 게임은 종료되며
 User user;//유저 객체에 대한 값 설정
 int score = 0, high_score = 0;//점수
 
+
+//인게임 함수, 여기서 엔드 게임을 담당함.
 void In_game()
 {
 
@@ -98,8 +100,10 @@ void In_game()
 
 }
 
+//콘솔 기본 설정 후 게임 시작
 int main()
 {
+ 
     Console_init();
    // playBGM("Resource/Sound/");
     Start_Game();
