@@ -146,9 +146,3 @@ int Images_Input_location(Image* images, bool direction)
 	return -1;
 }
 
-int Game_End()
-{
-	extern User user;
-	if (user.HP <= 0) return 0;
-	return 1;
-}

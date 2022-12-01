@@ -2,7 +2,7 @@
 #include "Object.h"
 #include "Judgement.h"
 
-
+//종료화면 출력
 int End_Game(int* score, int* high_score)
 {
 	//Change color to default;
@@ -57,12 +57,7 @@ int End_Game(int* score, int* high_score)
 	return mouse_lr;
 }
 
-void Playing_Game()
-{
-	
-    return;
-}
-
+//시작 화면
 void Start_Game()
 {
     typedef struct {

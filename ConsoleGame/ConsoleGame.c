@@ -23,7 +23,6 @@ int score = 0, high_score = 0;//점수
 //인게임 함수, 여기서 엔드 게임을 담당함.
 void In_game()
 {
-
     score = 0;
     Console_init();//콘솔 기본 설정
     ImageLayer imageLayer = DEFAULT_IMAGE_LAYER;
@@ -76,7 +75,7 @@ void In_game()
                 return;
             }
         }
-		if (score > high_score)
+		if (score > high_score)//하이 스코어 갱신
 		{
 			high_score = score;
 
@@ -98,8 +97,7 @@ void In_game()
 
 //콘솔 기본 설정 후 게임 시작
 int main()
-{
- 
+{ 
     Console_init();
    // playBGM("Resource/Sound/");
     Start_Game();

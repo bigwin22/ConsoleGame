@@ -18,5 +18,4 @@ int Bumpped(Image* images, int image_count, int obj_lo, int cnt, ...);
 int Keyboard_pressed();
 int Images_Input_location(Image* images, bool direction);
 void GetInput();
-int Game_End();
 
